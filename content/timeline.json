@@ -1,0 +1,197 @@
+{
+  "car": {
+    "name": "My MINI",
+    "model": "MINI Cooper S (F56)",
+    "spec": {
+      "vinShort": "2B89688",
+      "built": "2015-07-21",
+      "engine": "B48 2.0 turbo",
+      "power": "141 kW / 192 hp",
+      "drive": "FWD",
+      "steering": "Left-hand drive",
+      "paint": "B71 Moonwalk Grey metallic",
+      "upholstery": "KDE1 Fabric/leatherette Black Pearl / Carbon Black",
+      "options": [
+        { "code": "7Y2", "name": "Chili II package" },
+        { "code": "383", "name": "Roof and mirror caps, black" },
+        { "code": "402", "name": "Panorama glass roof" },
+        { "code": "2F2", "name": "17\" Cosmos Spoke wheels, black" },
+        { "code": "5A4", "name": "LED headlights, extended scope" },
+        { "code": "5A1", "name": "LED fog lights" },
+        { "code": "785", "name": "White direction indicators" },
+        { "code": "563", "name": "Light package" },
+        { "code": "481", "name": "Sports seats" },
+        { "code": "494", "name": "Heated front seats" },
+        { "code": "4C1", "name": "Colour Line Carbon Black" },
+        { "code": "4DC", "name": "Interior surface, Black Chequered" },
+        { "code": "4AA", "name": "Anthracite headlining" },
+        { "code": "4V9", "name": "MINI Excitement package" },
+        { "code": "4VA", "name": "MINI Driving Modes" },
+        { "code": "255", "name": "Sports leather steering wheel" },
+        { "code": "249", "name": "Multifunction steering wheel" },
+        { "code": "2VG", "name": "Performance Control" },
+        { "code": "609", "name": "Navigation Professional" },
+        { "code": "6NT", "name": "MINI Connected XL" },
+        { "code": "534", "name": "Automatic air conditioning" },
+        { "code": "544", "name": "Cruise control with braking function" },
+        { "code": "508", "name": "Park Distance Control" },
+        { "code": "5DP", "name": "Park Assist" },
+        { "code": "521", "name": "Rain sensor" },
+        { "code": "313", "name": "Folding exterior mirrors" },
+        { "code": "302", "name": "Alarm system" }
+      ]
+    },
+    "factory": {
+      "@body": { "color": "#7b7e7d", "finish": "metallic", "label": "Moonwalk Grey (B71)" },
+      "hood_scoop": { "color": "#7b7e7d", "finish": "metallic", "label": "Moonwalk Grey (B71)" },
+      "roof": { "color": "#0b0b0c", "finish": "gloss", "label": "Black (S383) + panorama glass" },
+      "spoiler": { "color": "#0b0b0c", "finish": "gloss", "label": "Black" },
+      "spoiler_lip": { "color": "#0b0b0c", "finish": "satin", "label": "Black trim" },
+      "sunroof": { "color": "#0a0c0f", "finish": "glass", "label": "Tinted glass (S402)" },
+      "@mirror_caps": { "color": "#0b0b0c", "finish": "gloss", "label": "Black (S383)" },
+      "@chrome": { "color": "#d9dadc", "finish": "chrome", "label": "Chrome" },
+      "chrome_exhaust": { "color": "#d9dadc", "finish": "chrome", "label": "Chrome" },
+      "grille_bar": { "color": "#0b0b0c", "finish": "gloss", "label": "Black" },
+      "@drl": { "color": "#ffffff", "finish": "emissive", "label": "LED DRL" },
+      "@headlight_ring_lower": { "color": "#9a9ea3", "finish": "satin", "label": "Unlit ring section" },
+      "wheels": { "color": "#141416", "finish": "satin", "label": "Cosmos Spoke, black (S2F2)" },
+      "callipers": { "color": "#2a2a2c", "finish": "satin", "label": "Dark grey" }
+    }
+  },
+  "events": [
+    {
+      "id": "factory",
+      "date": "2015-07-21",
+      "title": "Built at the factory",
+      "body": "Cooper S in Moonwalk Grey metallic with a black roof and mirror caps, panorama glass roof, Chili II package and black 17\" Cosmos Spoke wheels.",
+      "tags": ["factory"],
+      "source": "VIN decoder build sheet"
+    },
+    {
+      "id": "rear-bumper-repaint",
+      "date": "2026-03-03",
+      "dateLabel": "Before purchase (date unknown)",
+      "title": "Rear bumper repainted (previous owner)",
+      "body": "The rear bumper had already been repainted in Moonwalk Grey before I bought the car. When and why is unknown.",
+      "tags": ["repair"],
+      "parts": {
+        "bumper_r": { "color": "#7b7e7d", "finish": "metallic", "label": "Moonwalk Grey (repainted)" }
+      }
+    },
+    {
+      "id": "purchase",
+      "date": "2026-03-04",
+      "title": "Bought the MINI in Belgium",
+      "body": "Flew to Brussels and bought it with 137,000 km on the clock, still in its factory look.",
+      "tags": ["purchase"],
+      "odometerKm": 137000,
+      "costEur": 11000,
+      "photos": [{ "src": "/photos/factory.jpg", "caption": "As bought" }],
+      "source": "Notion · Car Expenses"
+    },
+    {
+      "id": "drive-home",
+      "date": "2026-03-05",
+      "title": "Drive home: transit plates + Kiel → Klaipėda ferry",
+      "body": "Red Belgian transit plates XA-26-FAF (€300), the ferry from Kiel to Klaipėda (€150) and hotel stays on the way. The first AliExpress parts for the car were ordered on 6 March.",
+      "tags": ["trip"],
+      "plate": { "number": "XA-26-FAF", "style": "be-export" },
+      "costEur": 692.45,
+      "source": "Notion · Car Expenses"
+    },
+    {
+      "id": "registration",
+      "date": "2026-04-02",
+      "title": "First registration + insurance",
+      "body": "Registered in Estonia with plates 770 RTW. Registration fee (riigilõiv) for first registration, €515.30, plus the first insurance payment, €42.30.",
+      "tags": ["legal"],
+      "plate": { "number": "770 RTW", "style": "ee" },
+      "costEur": 557.6,
+      "source": "Notion · Car Expenses"
+    },
+    {
+      "id": "service-1",
+      "date": "2026-04-07",
+      "title": "Maintenance service",
+      "body": "Engine oil, oil filter, drain plug + washer, cabin filter, air filter, consumables, and an inspection.",
+      "tags": ["service"],
+      "odometerKm": 138133,
+      "costEur": 260,
+      "source": "Notion · Car Expenses"
+    },
+    {
+      "id": "parts-april",
+      "date": "2026-04-15",
+      "title": "Spark plugs + indicator stalk",
+      "body": "NGK SILZKGR8B8S-4 spark plugs (€62.32) and a replacement wiper / turn-signal stalk, DLT80196 (€18.75).",
+      "tags": ["service", "repair"],
+      "costEur": 81.07,
+      "source": "Notion · Car Expenses"
+    },
+    {
+      "id": "alignment",
+      "date": "2026-04-27",
+      "title": "Wheel alignment + tyre service",
+      "tags": ["service"],
+      "costEur": 289,
+      "source": "Notion · Car Expenses"
+    },
+    {
+      "id": "cooling-repair",
+      "date": "2026-04-28",
+      "title": "Cooling system / oil repair",
+      "body": "GRT Autokoda, invoice #100755.",
+      "tags": ["repair"],
+      "odometerKm": 139370,
+      "costEur": 920,
+      "source": "Notion · Car Expenses"
+    },
+    {
+      "id": "wrap",
+      "date": "2026-06-26",
+      "title": "Wrap: red roof, mirror caps, grille stripe + dechrome",
+      "body": "Roof, spoiler and mirror caps wrapped red (the panorama glass stays glass), a red stripe on the grille, chrome trim wrapped gloss black (the side scuttles kept their chrome), and the hood scoop painted black. At the same time the front bumper was repaired and repainted in Moonwalk Grey (covered by insurance), plus detailing (≈€250).",
+      "tags": ["wrap", "repair", "detail"],
+      "costEur": 2150,
+      "source": "Notion · Car Expenses",
+      "parts": {
+        "roof": { "color": "#b5121b", "finish": "gloss", "label": "Red" },
+        "spoiler": { "color": "#b5121b", "finish": "gloss", "label": "Red" },
+        "@mirror_caps": { "color": "#b5121b", "finish": "gloss", "label": "Red" },
+        "grille_bar": { "color": "#b5121b", "finish": "gloss", "label": "Red stripe" },
+        "hood_scoop": { "color": "#0b0b0c", "finish": "gloss", "label": "Black (painted)" },
+        "bumper_f": { "color": "#7b7e7d", "finish": "metallic", "label": "Moonwalk Grey (repainted, insurance)" },
+        "chrome_grille_surround": { "color": "#0b0b0c", "finish": "gloss", "label": "Gloss black (dechrome)" },
+        "chrome_window_trim": { "color": "#0b0b0c", "finish": "gloss", "label": "Gloss black (dechrome)" },
+        "chrome_cowl": { "color": "#0b0b0c", "finish": "gloss", "label": "Gloss black (dechrome)" },
+        "chrome_door_handle_l": { "color": "#0b0b0c", "finish": "gloss", "label": "Gloss black (dechrome)" },
+        "chrome_door_handle_r": { "color": "#0b0b0c", "finish": "gloss", "label": "Gloss black (dechrome)" },
+        "chrome_taillight_ring_l": { "color": "#0b0b0c", "finish": "gloss", "label": "Gloss black (dechrome)" },
+        "chrome_taillight_ring_r": { "color": "#0b0b0c", "finish": "gloss", "label": "Gloss black (dechrome)" },
+        "chrome_fuel_cap": { "color": "#0b0b0c", "finish": "gloss", "label": "Gloss black (dechrome)" }
+      }
+    },
+    {
+      "id": "rear-shocks",
+      "date": "2026-08-27",
+      "title": "Rear shock mounts + dust covers",
+      "body": "GRT Autokoda, invoice #101131. Rear shock dust cover + bump stop kit €34.11, two rear shock top mounts €89.68, consumables €13.71, 3.5 h repair + inspection €160.89 (€298.39 + 24% VAT).",
+      "tags": ["repair"],
+      "odometerKm": 145018,
+      "costEur": 370,
+      "photos": [{ "src": "/photos/2026-08-27-grt-invoice-101131.jpg", "caption": "GRT Autokoda invoice #101131" }],
+      "source": "Notion · Car Expenses"
+    },
+    {
+      "id": "engine-mount",
+      "date": "2026-10-14",
+      "title": "Engine mount replaced",
+      "body": "GRT Autokoda, invoice #101247. New engine mount (mootori padi) €112.90, consumables €7.66, 1.5 h labour €68.95 (€189.51 + 24% VAT).",
+      "tags": ["repair"],
+      "odometerKm": 146888,
+      "costEur": 235,
+      "photos": [{ "src": "/photos/2026-10-14-grt-invoice-101247.jpg", "caption": "GRT Autokoda invoice #101247" }],
+      "source": "Notion · Car Expenses"
+    }
+  ]
+}

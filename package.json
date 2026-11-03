@@ -6,20 +6,38 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "model:convert": "node -e \"const p=require('path'),{execFileSync}=require('child_process');execFileSync(p.join('node_modules/fbx2gltf/bin',process.platform==='win32'?'Windows_NT/FBX2glTF.exe':process.platform==='darwin'?'Darwin/FBX2glTF':'Linux/FBX2glTF'),['--binary','--input','assets-src/FINAL_MODEL_s_14/FINAL_MODEL_s_14.fbx','--output','assets-src/f56-raw'],{stdio:'inherit'})\"",
+    "model:build": "node scripts/build-model.mjs",
+    "model:inspect": "node scripts/inspect-model.mjs public/models/f56.glb",
+    "screenshots": "node scripts/readme-shots.mjs"
   },
   "dependencies": {
+    "@react-three/drei": "^10.7.9",
+    "@react-three/fiber": "^9.8.2",
+    "date-fns": "^4.4.0",
     "next": "16.4.4",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "three": "^0.187.0",
+    "zod": "^4.6.7",
+    "zustand": "^5.0.16"
   },
   "devDependencies": {
+    "@gltf-transform/cli": "^4.5.1",
+    "@gltf-transform/core": "^4.5.1",
+    "@gltf-transform/extensions": "^4.5.1",
+    "@gltf-transform/functions": "^4.5.1",
     "@tailwindcss/turbopack": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/three": "^0.187.0",
     "eslint": "^9",
     "eslint-config-next": "16.4.4",
+    "fbx2gltf": "^0.9.7-p1",
+    "puppeteer-core": "^25.16.0",
+    "sharp": "^0.35.5",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

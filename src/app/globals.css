@@ -1,26 +1,97 @@
 @import "tailwindcss";
 
+/* MINI-inspired design tokens: white surfaces, black type, one teal accent. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ink: #000000;
+  --paper: #ffffff;
+  --mist: #f3f3f3;
+  --line: #e2e2e2;
+  --muted: #6e6e6e;
+  --accent: #006782;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-mist: var(--mist);
+  --color-line: var(--line);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-sans), Arial, sans-serif;
+  --font-serif: var(--font-serif), Georgia, serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* The app is a fixed, full-screen surface: no page scroll, no rubber-banding, no
+   address-bar resize jumps (svh is the stable "small" viewport height). */
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* component classes live in a layer so Tailwind utilities (hidden, sizes…) still win */
+@layer components {
+  /* MINI headline: heavy uppercase serif, tight leading */
+  .headline {
+    font-family: var(--font-serif);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.02;
+    letter-spacing: -0.005em;
+  }
+  .subline {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 700;
+  }
+  /* the short black rule MINI puts under headings */
+  .rule {
+    display: block;
+    width: 48px;
+    height: 2px;
+    background: var(--ink);
+  }
+  
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    height: 2.5rem;
+    padding: 0 1.25rem;
+    border-radius: 9999px;
+    border: 1.5px solid var(--ink);
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 0.9375rem;
+    white-space: nowrap;
+    transition: background-color 0.15s, color 0.15s;
+  }
+  /* only real hover devices: on touch screens :hover sticks after a tap */
+  @media (hover: hover) {
+    .pill:hover {
+      background: var(--ink);
+      color: var(--paper);
+    }
+  }
+  .pill:active {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .pill-icon {
+    width: 2.5rem;
+    padding: 0;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
 }
