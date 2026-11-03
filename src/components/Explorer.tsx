@@ -25,12 +25,13 @@ export function Explorer({ timeline }: { timeline: TimelineData }) {
   const selectedPart = useExplorer((s) => s.selectedPart);
   const [sheetOpen, setSheetOpen] = useState(false);
 
-  // deep link: ?t=YYYY-MM-DD, otherwise start at today
+  // deep link: ?t=YYYY-MM-DD, otherwise start where the story starts: the factory build
   useEffect(() => {
     if (!today) return;
     const t = new URLSearchParams(window.location.search).get("t");
-    setTime(t && /^\d{4}-\d{2}-\d{2}$/.test(t) ? t : today);
-  }, [setTime, today]);
+    const built = timeline.events.find((e) => e.tags.includes("factory"))?.date ?? timeline.events[0]?.date ?? today;
+    setTime(t && /^\d{4}-\d{2}-\d{2}$/.test(t) ? t : built);
+  }, [setTime, today, timeline.events]);
 
   // keep ?t= in sync (without adding history entries)
   useEffect(() => {

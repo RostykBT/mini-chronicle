@@ -32,23 +32,40 @@ const TARGET: [number, number, number] = [0, 0.62, 0];
 const MOBILE = 1024; // px, same breakpoint as the layout's lg:
 
 /**
- * Keeps the car framed for the canvas shape: wider FOV in portrait so the whole car fits,
- * and on phones the image is shifted up so the car sits above the collapsed detail sheet.
+ * Lens, as a 35 mm full-frame focal length (36 × 24 mm sensor): a 60 mm short telephoto,
+ * like car photography: flatter perspective, no wide-angle bulge. Portrait screens use a
+ * 40 mm so the whole car still fits the narrow width. (Before: ≈45 mm desktop, ≈25 mm phone.)
+ * The camera presets were composed for a 30° vertical FOV.
  */
+const FOCAL_LANDSCAPE_MM = 60;
+const FOCAL_PORTRAIT_MM = 40;
+const SENSOR_HEIGHT_MM = 24;
+const PRESET_FOV = 30;
+const clamp01 = (x: number) => THREE.MathUtils.clamp(x, 0, 1);
+const fovFromFocal = (mm: number) => THREE.MathUtils.radToDeg(2 * Math.atan(SENSOR_HEIGHT_MM / 2 / mm));
+const focalFor = (aspect: number) =>
+  aspect >= 1.2 ? FOCAL_LANDSCAPE_MM : THREE.MathUtils.lerp(FOCAL_PORTRAIT_MM, FOCAL_LANDSCAPE_MM, clamp01((aspect - 0.5) / 0.7));
+const lensFov = (aspect: number) => fovFromFocal(focalFor(aspect));
+/** How much of the scene the original presets showed on this screen (fov × portrait pull-back). */
+const presetCoverage = (aspect: number) => {
+  const fov = aspect >= 1.2 ? 30 : THREE.MathUtils.lerp(52, 30, clamp01((aspect - 0.5) / 0.7));
+  const pull = aspect >= 1 ? 1 : THREE.MathUtils.lerp(1.22, 1, clamp01((aspect - 0.45) / 0.55));
+  return Math.tan(THREE.MathUtils.degToRad(fov / 2)) * pull;
+};
+
+/** Sets the lens; on phones the image is shifted up so the car sits above the detail sheet. */
 function frameCamera(cam: THREE.PerspectiveCamera, width: number, height: number) {
-  const aspect = width / height;
-  cam.fov = aspect >= 1.2 ? 30 : THREE.MathUtils.lerp(52, 30, THREE.MathUtils.clamp((aspect - 0.5) / 0.7, 0, 1));
+  cam.fov = lensFov(width / height);
   const lift = width < MOBILE ? SHEET_PEEK * 0.55 : 0;
   if (lift) cam.setViewOffset(width, height, 0, lift, width, height);
   else cam.clearViewOffset();
   cam.updateProjectionMatrix();
 }
 
-/** Portrait screens start further back so the whole car fits across the narrow width. */
+/** Moves the camera back along its view line so the narrower lens frames the same scene. */
 function initialDistance(cam: THREE.Camera, width: number, height: number) {
   const aspect = width / height;
-  if (aspect >= 1) return;
-  const k = THREE.MathUtils.lerp(1.22, 1, THREE.MathUtils.clamp((aspect - 0.45) / 0.55, 0, 1));
+  const k = presetCoverage(aspect) / Math.tan(THREE.MathUtils.degToRad(lensFov(aspect) / 2));
   const t = new THREE.Vector3(...TARGET);
   cam.position.sub(t).multiplyScalar(k).add(t);
 }
@@ -114,7 +131,7 @@ export default function CarScene({ state, plate }: { state: CarState; plate: Pla
     <div className="absolute inset-0 touch-none bg-mist">
       <Canvas
         dpr={[1, 2]}
-        camera={{ position: view, fov: 30, near: 0.1, far: 400 }}
+        camera={{ position: view, fov: PRESET_FOV, near: 0.1, far: 400 }}
         onPointerMissed={() => clearSelection(null)}
         gl={{ antialias: true, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.0 }}
       >
@@ -129,8 +146,8 @@ export default function CarScene({ state, plate }: { state: CarState; plate: Pla
           enablePan={false}
           enableDamping
           dampingFactor={0.08}
-          minDistance={3.4}
-          maxDistance={13}
+          minDistance={4.2}
+          maxDistance={22}
           minPolarAngle={0.25}
           maxPolarAngle={Math.PI / 2 - 0.06}
         />

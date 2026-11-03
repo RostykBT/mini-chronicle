@@ -17,6 +17,12 @@ wraps, repaints, dechromes and number plates appear on the right date, with the 
 
 <br>
 
+### [**→ Open the live app**](https://mini-chronicle.vercel.app)
+
+<sub>Starts at the factory in 2015 — press <kbd>▶</kbd> to drive through the car's whole life.</sub>
+
+<br>
+
 <img src="docs/screenshots/hero.jpg" alt="The explorer: the MINI on an open car park, the latest entry in the sidebar and the timeline below" width="100%">
 
 </div>
@@ -150,6 +156,8 @@ plates to EU format and removes the plate holder. `/debug/model` shows every par
 
 ## RUN IT.
 
+Live at **[mini-chronicle.vercel.app](https://mini-chronicle.vercel.app)**. To run it locally:
+
 ```bash
 npm install
 npm run dev            # http://localhost:3000
@@ -157,6 +165,7 @@ npm run dev            # http://localhost:3000
 
 | Link | Opens |
 |---|---|
+| `/` | the car as it was built (21 July 2015) |
 | `/?t=2026-03-10` | the car on a given date |
 | `/?view=front` | a camera preset: `front` `rear` `left` `right` `top` `plate` `plate_rear` `scoop` `spoiler` `spoiler_close` |
 | `/debug/model` | the part map |
